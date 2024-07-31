@@ -13,7 +13,7 @@ Như đã đề cập trước đó, **NLB** chúng ta đã tạo đang hoạt �
 
 Bộ điều khiển **Cân bằng Tải AWS** cũng hỗ trợ tạo **NLB** hoạt động ở chế độ "**IP mode**". Trong chế độ này, **AWS NLB** gửi lưu lượng trực tiếp đến các pod **Kubernetes** đằng sau dịch vụ, loại bỏ nhu cầu cho một bước nhảy mạng phụ qua các nút làm việc trong cụm **Kubernetes**. Chế độ mục tiêu IP hỗ trợ các pod đang chạy trên cả các máy **EC2** của **AWS** và **AWS Fargate**.
 
-![EKS](/images/1/00014.png?featherlight=false&width=60pc)
+![EKS](/EKS-Workshop-2/images/1/00014.png?featherlight=false&width=60pc)
 
 Có một số lý do mà chúng ta có thể muốn cấu hình **NLB** để hoạt động ở chế độ mục tiêu IP:
 

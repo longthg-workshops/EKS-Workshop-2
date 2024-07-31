@@ -36,6 +36,6 @@ spec:
 
 Điều này rất tuyệt vì tính đơn giản của việc đặt một bộ cân bằng tải trước ứng dụng của bạn. Đặc tả dịch vụ đã được mở rộng qua các năm với các chú thích và cấu hình bổ sung. Một lựa chọn thứ hai là sử dụng quy tắc nhập và một bộ điều khiển nhập để định tuyến lưu lượng bên ngoài vào các pod **Kubernetes**.
 
-![EKS](/images/1/00013.png?featherlight=false&width=60pc)
+![EKS](/EKS-Workshop-2/images/1/00013.png?featherlight=false&width=60pc)
 
 Trong chương này, chúng tôi sẽ thể hiện cách phơi bày một ứng dụng đang chạy trong cụm **EKS** ra Internet bằng cách sử dụng một **Bộ cân bằng Tải Mạng** ở tầng 4.

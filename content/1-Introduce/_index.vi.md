@@ -18,7 +18,7 @@ Tên **Kubernetes** bắt nguồn từ tiếng Hy Lạp, nghĩa là người lá
 
 Hãy xem xét tại sao Kubernetes lại quan trọng thông qua việc nhìn lại quá khứ.
 
-![Kubernetes](/images/4/00010.svg?featherlight=false&width=60pc)
+![Kubernetes](/EKS-Workshop-2/images/4/00010.svg?featherlight=false&width=60pc)
 
 **Thời kỳ triển khai truyền thống:** Ban đầu, các ứng dụng được chạy trực tiếp trên máy chủ vật lý, khiến việc phân bổ tài nguyên gặp khó khăn do không có cơ chế xác định ranh giới tài nguyên cho từng ứng dụng. Cách tiếp cận này dẫn đến nguy cơ một ứng dụng có thể sử dụng quá nhiều tài nguyên, ảnh hưởng đến hoạt động của các ứng dụng khác. Giải pháp là chạy mỗi ứng dụng trên một máy chủ vật lý riêng biệt, nhưng điều này lại không hiệu quả về mặt chi phí và tài nguyên.
 
