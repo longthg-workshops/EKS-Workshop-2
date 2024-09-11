@@ -23,12 +23,12 @@ Bạn nên bắt đầu mỗi bài lab từ trang đầu tiên. Bắt đầu ở
 
 Sau khi bạn đã truy cập vào Cloud9 IDE, chúng tôi khuyến nghị bạn sử dụng nút **+** và chọn **New Terminal** để mở một cửa sổ terminal mới toàn màn hình.
 
-![EKS](../../../images/part2/3/00013.png?featherlight=false&width=90pc)
+![EKS](../../../images/2/3/00013.png?featherlight=false&width=90pc)
 
 
 Điều này sẽ mở một tab mới với một terminal mới.
 
-![EKS](../../../images/part2/3/00014.png?featherlight=false&width=90pc)
+![EKS](../../../images/2/3/00014.png?featherlight=false&width=90pc)
 
 Bạn cũng có thể đóng terminal nhỏ ở dưới nếu bạn muốn.
 
