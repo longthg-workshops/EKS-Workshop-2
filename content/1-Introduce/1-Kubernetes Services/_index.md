@@ -113,3 +113,17 @@ spec:
     - port: 80
 ```
 This is great because of how simple it is to put a load balancer in front of your application. The service spec has been extended over the years with annotations and additional configuration. A second option is to use an ingress rule and an ingress controller to route external traffic into Kubernetes pods.
+
+#### 4. ExternalName
+An ExternalName Service is a special case of Service that does not have selectors and uses DNS names instead, e.g.
+```yaml
+apiversion: v1
+kind: Service
+metadata:
+  name: my-database-svc
+  namespace: prod
+spec:
+  type: ExternalName
+  externalName: my.database.example.com
+```
+When looking up the service my-database-svc.prod.svc.cluster.local, the cluster DNS Service returns a CNAME record for my.database.example.com.

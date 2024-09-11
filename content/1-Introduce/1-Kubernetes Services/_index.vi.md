@@ -130,7 +130,7 @@ metadata:
 Thông số kỹ thuật dịch vụ đã được mở rộng qua nhiều năm với các chú thích và cấu hình bổ sung. Một lựa chọn khác là sử dụng quy tắc ingress và bộ điều khiển ingress để định tuyến lưu lượng truy cập bên ngoài vào các pod Kubernetes.
 
 #### 4. ExternalName
-An ExternalName Service is a special case of Service that does not have selectors and uses DNS names instead, e.g.
+Dịch vụ ExternalName là trường hợp đặc biệt của Dịch vụ, không có Selector và thay vào đó sử dụng tên DNS, ví dụ:
 ```yaml
 apiversion: v1
 kind: Service
@@ -141,4 +141,4 @@ spec:
   type: ExternalName
   externalName: my.database.example.com
 ```
-When looking up the service my-database-svc.prod.svc.cluster.local, the cluster DNS Service returns a CNAME record for my.database.example.com.
+Khi tìm dịch vụ my-database-svc.prod.svc.cluster.local, Dịch vụ DNS cụm sẽ trả về bản ghi CNAME cho my.database.example.com.
