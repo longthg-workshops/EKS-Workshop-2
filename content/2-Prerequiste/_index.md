@@ -21,3 +21,5 @@ Before getting into the labs of this workshop, the following three steps must be
     - Either with CloudFormation or Terraform.
 
 3. [Get to know the Lab Structure](./2.3-structure)
+
+4. [Prepare your environment for this lab](./2.4-thislab)

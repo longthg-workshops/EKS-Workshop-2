@@ -6,12 +6,31 @@ chapter: false
 pre: "<b> 4.2 </b>"
 ---
 
-#### Tạo Ingress
-
 Hãy tạo một tài nguyên Ingress với bản mô tả sau:
 
-```file
-manifests/modules/exposing/ingress/creating-ingress/ingress.yaml
+**_~/environment/eks-workshop/modules/exposing/ingress/creating-ingress/ingress.yaml_**
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ui
+  namespace: ui
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /actuator/health/liveness
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ui
+                port:
+                  number: 80
 ```
 
 Điều này sẽ khiến AWS Load Balancer Controller triển khai một Application Load Balancer và cấu hình nó để định tuyến lưu lượng đến các Pod cho ứng dụng `ui`.
@@ -74,7 +93,7 @@ $ aws elbv2 describe-load-balancers --query 'LoadBalancers[?contains(LoadBalance
 Điều này nói cho chúng ta điều gì?
 
 - ALB có thể truy cập qua public internet
-- Nó sử dụng các public subnet trong VPC của chúng tôi
+- Nó sử dụng các public subnet trong VPC của chúng ta
 
 Kiểm tra các mục tiêu trong nhóm mục tiêu được tạo ra bởi bộ điều khiển:
 
@@ -99,7 +118,7 @@ $ aws elbv2 describe-target-health --target-group-arn $TARGET_GROUP_ARN
 }
 ```
 
-Vì chúng tôi đã chỉ định sử dụng chế độ IP trong đối tượng Ingress của chúng tôi, mục tiêu được đăng ký bằng địa chỉ IP của pod `ui` và cổng mà nó phục vụ lưu lượng.
+Vì chúng ta đã chỉ định sử dụng chế độ IP trong đối tượng Ingress của chúng ta, mục tiêu được đăng ký bằng địa chỉ IP của pod `ui` và cổng mà nó phục vụ lưu lượng.
 
 Bạn cũng có thể kiểm tra ALB và các nhóm mục tiêu của nó trong bảng điều khiển bằng cách nhấp vào liên kết này:
 
@@ -119,3 +138,5 @@ $ wait-for-lb $(kubectl get ingress -n ui ui -o jsonpath="{.status.loadBalancer.
 ```
 
 Và truy cập vào trình duyệt web của bạn. Bạn sẽ thấy giao diện người dùng từ cửa hàng web được hiển thị và sẽ có thể di chuyển xung quanh trang web như một người dùng.
+
+![ui](../../../images/4/2/0001.webp)

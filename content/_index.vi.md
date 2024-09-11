@@ -1,5 +1,5 @@
 ---
-title: "Cân bằng tải và Ingress trên Amazon EKS"
+title: "Hiển thị dịch vụ của bạn trên Amazon EKS"
 date: "`r Sys.Date()`"
 weight: 1
 chapter: false
@@ -38,7 +38,7 @@ Amazon EKS tích hợp khối công việc của bạn trên Kubernetes với c�
 #### Dễ dàng mở rộng cụm
 Amazon EKS cho phép bạn dễ dàng chỉnh quy mô các cụm Kubernetes của mình lên và xuống dựa trên nhu cầu của khối lượng công việc của bạn. Amazon EKS hỗ trợ tự động mở rộng Pod theo chiều ngang dựa trên CPU hoặc số liệu tùy chỉnh và tự động mở rộng cụm dựa trên nhu cầu của toàn bộ khối lượng công việc.
 
-#### Trải nghiệm Kubernetes được quản lý
+#### Trải nghiệm Kubernetes được quản lý bởi AWS
 Bạn có thể thực hiện các thay đổi đối với các cụm Kubernetes của mình bằng eksctl, AWS Management Console, AWS Command Line Interface (AWS CLI), API, kubectl và Terraform.
 
 #### Tính khả dụng cao

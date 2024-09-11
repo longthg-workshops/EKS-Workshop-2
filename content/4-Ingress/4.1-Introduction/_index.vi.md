@@ -5,9 +5,7 @@ weight: 1
 chapter: false
 pre: "<b> 4.1 </b>"
 ---
-
-#### Giới thiệu
-
+Ư
 Hiện tại, trong cụm của chúng ta không có tài nguyên **Ingress**, bạn có thể kiểm tra bằng lệnh sau:
 
 ```bash expectError=true

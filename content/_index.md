@@ -1,5 +1,5 @@
 ---
-title: "Load balancing and Ingress on Amazon EKS"
+title: "Exposing your applications on Amazon EKS"
 date: "`r Sys.Date()`"
 weight: 1
 chapter: false

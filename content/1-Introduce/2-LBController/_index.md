@@ -1,9 +1,9 @@
 ---
-title: "AWS Load Balancer Controller"
-date: "`r Sys.Date()`"
-weight: 3
+title: "Load Ballancer Controller"
+date: "2024-04-03"
+weight: 2
 chapter: false
-pre: "<b> 3. </b>"
+pre: "<b> 1.2 </b>"
 ---
 
 **AWS Load Balancer Controller** is a [controller](https://kubernetes.io/docs/concepts/architecture/controller/) to help manage Elastic Load Balancers for a Kubernetes cluster.

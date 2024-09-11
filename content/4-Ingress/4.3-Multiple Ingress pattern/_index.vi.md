@@ -6,8 +6,6 @@ chapter: false
 pre: "<b> 4.3 </b>"
 ---
 
-#### Multiple Ingress pattern
-
 Trong một EKS cluster, việc tận dụng nhiều đối tượng Ingress là điều phổ biến, ví dụ để tiếp cận nhiều workloads khác nhau. Theo mặc định, mỗi Ingress sẽ dẫn đến việc tạo ra một ALB riêng biệt, nhưng chúng ta có thể tận dụng tính năng IngressGroup để nhóm nhiều tài nguyên Ingress lại với nhau. Controller sẽ tự động hợp nhất các quy tắc Ingress cho tất cả các Ingress trong IngressGroup và hỗ trợ chúng với một ALB duy nhất. Ngoài ra, hầu hết các chú thích được định nghĩa trên một Ingress chỉ áp dụng cho các đường dẫn được xác định bởi Ingress đó.
 
 Trong ví dụ này, chúng ta sẽ tiếp cận API `catalog` thông qua cùng một ALB như thành phần `ui`, tận dụng định tuyến dựa trên đường dẫn để chuyển hướng các yêu cầu đến dịch vụ Kubernetes phù hợp. Hãy kiểm tra xem chúng ta đã có thể truy cập API catalog chưa:
@@ -19,14 +17,61 @@ $ curl $ADDRESS/catalogue
 
 Điều đầu tiên chúng ta sẽ làm là tạo lại Ingress cho thành phần `ui`, thêm chú thích `alb.ingress.kubernetes.io/group.name`:
 
-```file
-manifests/modules/exposing/ingress/multiple-ingress/ingress-ui.yaml
+**_~/environment/eks-workshop/modules/exposing/ingress/multiple-ingress/ingress-ui.yaml_**
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ui
+  namespace: ui
+  labels:
+    app.kubernetes.io/created-by: eks-workshop
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /actuator/health/liveness
+    alb.ingress.kubernetes.io/group.name: retail-app-group
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ui
+                port:
+                  number: 80
 ```
 
 Bây giờ, hãy tạo một Ingress riêng cho thành phần `catalog` cũng tận dụng `group.name` tương tự:
 
-```file
-manifests/modules/exposing/ingress/multiple-ingress/ingress-catalog.yaml
+**_~/environment/eks-workshop/modules/exposing/ingress/multiple-ingress/ingress-catalog.yaml_**
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: catalog
+  namespace: catalog
+  labels:
+    app.kubernetes.io/created-by: eks-workshop
+  annotations:
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /health
+    alb.ingress.kubernetes.io/group.name: retail-app-group
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /catalogue
+            pathType: Prefix
+            backend:
+              service:
+                name: catalog
+                port:
+                  number: 80
 ```
 
 Ingress này cũng cấu hình quy tắc để định tuyến các yêu cầu có tiền tố `/catalogue` đến thành phần `catalog`.
@@ -87,4 +132,4 @@ curl $ADDRESS/catalogue | jq .
 
 ```
 
-Bạn sẽ nhận lại một tải dữ liệu JSON từ dịch vụ catalog, chứng tỏ chúng ta đã có thể tiếp cận nhiều dịch vụ Kubernetes qua cùng một ALB.
+Bạn sẽ nhận lại một JSON payload từ dịch vụ catalog, chứng tỏ chúng ta đã có thể tiếp cận nhiều dịch vụ Kubernetes qua cùng một ALB.

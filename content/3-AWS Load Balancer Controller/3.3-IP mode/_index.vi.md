@@ -13,7 +13,7 @@ Như đã đề cập trước đó, **NLB** chúng ta đã tạo đang hoạt �
 
 Bộ điều khiển **Cân bằng Tải AWS** cũng hỗ trợ tạo **NLB** hoạt động ở chế độ "**IP mode**". Trong chế độ này, **AWS NLB** gửi lưu lượng trực tiếp đến các pod **Kubernetes** đằng sau dịch vụ, loại bỏ nhu cầu cho một bước nhảy mạng phụ qua các nút làm việc trong cụm **Kubernetes**. Chế độ mục tiêu IP hỗ trợ các pod đang chạy trên cả các máy **EC2** của **AWS** và **AWS Fargate**.
 
-![EKS](../../../images/1/00014.png?featherlight=false&width=60pc)
+![EKS](../../../images/3/3/0001.webp?featherlight=false&width=60pc)
 
 Có một số lý do mà chúng ta có thể muốn cấu hình **NLB** để hoạt động ở chế độ mục tiêu IP:
 
@@ -27,9 +27,37 @@ Hãy tái cấu hình **NLB** của chúng ta để sử dụng chế độ IP v
 
 Đây là đoạn mã patch chúng ta sẽ áp dụng để tái cấu hình Dịch vụ:
 
-```kustomization
-modules/exposing/load-balancer/ip-mode/nlb.yaml
-Service/ui-nlb
+**_Kustomize: modules/exposing/load-balancer/ip-mode/nlb.yaml_**
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: ui-nlb
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+  namespace: ui
+```
+**_Service/ui-nlb_**
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+  name: ui-nlb
+  namespace: ui
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  selector:
+    app.kubernetes.io/component: service
+    app.kubernetes.io/instance: ui
+    app.kubernetes.io/name: ui
+  type: LoadBalancer
 ```
 
 Áp dụng các bản mẫu với **kustomize**:
@@ -47,7 +75,7 @@ Annotations:              service.beta.kubernetes.io/aws-load-balancer-nlb-targe
 ...
 ```
 
-Bạn nên có thể truy cập ứng dụng bằng cùng một URL như trước đó, với **NLB** bây giờ sử dụng chế độ IP để tiết lộ ứng dụng của bạn.
+Bạn nên có thể truy cập ứng dụng bằng cùng một URL như trước đó, với **NLB** bây giờ sử dụng chế độ IP để hiển thị ứng dụng của bạn.
 
 ```bash
 $ ALB_ARN=$(aws elbv2 describe-load-balancers --query 'LoadBalancers[?contains(LoadBalancerName, `k8s-ui-uinlb`) == `true`].LoadBalancerArn' | jq -r '.[0]')

@@ -1,13 +1,10 @@
 ---
-title: "Chuẩn bị cho Lab này"
+title: "Chuẩn bị môi trường cho Lab này"
 date: "2024-04-03"
 weight: 4
 chapter: false
 pre: "<b> 2.4 </b>"
 ---
-
-#### Các Bước Chuẩn Bị
-#### Chuẩn bị môi trường cho phần này:
 
 Để thực hiện lab này, hãy xem lại cách triển khai tài nguyên lab trong phần 2 của workshop đầu tiên (Kubernetes trên AWS). Trên môi trường Cloud9 đã tạo ở bài đầu tiên, chạy lệnh sau:
 
@@ -25,7 +22,7 @@ Thao tác này sẽ thực hiện các thay đổi sau vào môi trường lab c
 apiVersion: v1
 kind: Service
 metadata:
-  name: search-svc # tên của dịch vụ của chúng tôi
+  name: search-svc # tên của dịch vụ của chúng ta
 spec:
   type: loadBalancer
   selector:
@@ -38,4 +35,4 @@ spec:
 
 ![EKS](../../../images/1/00013.png?featherlight=false&width=60pc)
 
-Trong chương này, chúng tôi sẽ thể hiện cách phơi bày một ứng dụng đang chạy trong cụm **EKS** ra Internet bằng cách sử dụng một **Bộ cân bằng Tải Mạng** ở tầng 4.
+Trong chương này, chúng ta sẽ thể hiện cách phơi bày một ứng dụng đang chạy trong cụm **EKS** ra Internet bằng cách sử dụng một **Bộ cân bằng Tải Mạng** ở tầng 4.

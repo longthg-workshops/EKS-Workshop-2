@@ -97,7 +97,7 @@ module "vpc" {
 }
 ```
 
-Cuối cùng, tập tin `eks.tf` chỉ định cấu hình cụm EKS của chúng tôi, bao gồm một Nhóm Node Quản lý:
+Cuối cùng, tập tin `eks.tf` chỉ định cấu hình cụm EKS của chúng ta, bao gồm một Nhóm Node Quản lý:
 
 ```
 module "eks" {

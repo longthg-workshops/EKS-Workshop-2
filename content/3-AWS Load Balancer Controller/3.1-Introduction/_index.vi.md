@@ -7,8 +7,19 @@ pre: "<b> 3.1 </b>"
 ---
 
 #### Giới thiệu
+Đầu tiên, chúng ta cài đặt AWS Load Balancer Controller bằng Helm:
+```bash
+$ helm repo add eks-charts https://aws.github.io/eks-charts
+$ helm upgrade --install aws-load-balancer-controller eks-charts/aws-load-balancer-controller \
+    --version "${LBC_CHART_VERSION}" \
+    --namespace "kube-system" \
+    --set "clusterName=${EKS_CLUSTER_NAME}" \
+    --set "serviceAccount.name=aws-load-balancer-controller-sa" \
+    --set "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"="$LBC_ROLE_ARN" \
+    --wait
+```
 
-Chúng tôi xác nhận rằng các Service **microservices** của chúng tôi chỉ có thể truy cập nội bộ bằng cách nhìn vào các tài nguyên **current Service** trong cụm:
+Chúng ta cần xác nhận rằng các vi dịch vụ của chúng ta chỉ có thể truy cập nội bộ bằng cách nhìn vào các tài nguyên **current Service** trong cụm:
 
 ```bash
 $ kubectl get svc -l app.kubernetes.io/created-by=eks-workshop -A
@@ -26,7 +37,7 @@ rabbitmq    rabbitmq         ClusterIP   172.20.107.54    <none>        5672/TCP
 ui          ui               ClusterIP   172.20.62.119    <none>        80/TCP                                  1h
 ```
 
-Tất cả các thành phần ứng dụng của chúng tôi hiện đang sử dụng các Service **ClusterIP**, chỉ cho phép truy cập đến các công việc khác trong cùng một cụm **Kubernetes**. Để người dùng có thể truy cập ứng dụng của chúng tôi, chúng tôi cần phải tiết lộ ứng dụng `ui`, và trong ví dụ này, chúng tôi sẽ làm điều đó bằng cách sử dụng **Kubernetes services** loại **LoadBalancer**.
+Tất cả các thành phần ứng dụng của chúng ta hiện đang sử dụng các Service **ClusterIP**, chỉ cho phép truy cập đến các công việc khác trong cùng một cụm **Kubernetes**. Để người dùng có thể truy cập ứng dụng của chúng ta, chúng ta cần phải hiển thị ứng dụng `ui`, và trong ví dụ này, chúng ta sẽ làm điều đó bằng cách sử dụng **Kubernetes services** loại **LoadBalancer**.
 
 Trước tiên, hãy xem xét cẩn thận thông số kỹ thuật hiện tại của **Service** cho thành phần `ui`:
 
@@ -54,4 +65,4 @@ Session Affinity:  None
 Events:            <none>
 ```
 
-Như chúng ta đã thấy trước đó, hiện đang sử dụng loại **ClusterIP** và nhiệm vụ của chúng tôi trong module này là thay đổi điều này để giao diện người dùng của cửa hàng bán lẻ có thể truy cập thông qua **Public internet**.
+Như chúng ta đã thấy trước đó, hiện đang sử dụng loại **ClusterIP** và nhiệm vụ của chúng ta trong module này là thay đổi điều này để giao diện người dùng của cửa hàng bán lẻ có thể truy cập thông qua **Public internet**.

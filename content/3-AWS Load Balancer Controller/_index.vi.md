@@ -21,4 +21,6 @@ Controller này giúp bạn đơn giản hóa hoạt động và tiết kiệm c
 
 AWS Load Balancer Controller đã được cài đặt sẵn trong cluster của chúng ta, vì vậy chúng ta có thể bắt đầu tạo các tài nguyên.
 
+{{% notice info %}}
 AWS Load Balancer Controller trước đây được gọi là AWS ALB Ingress Controller.
+{{% /notice %}}
