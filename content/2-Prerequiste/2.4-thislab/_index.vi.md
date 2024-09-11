@@ -6,9 +6,9 @@ chapter: false
 pre: "<b> 2.4 </b>"
 ---
 
-Để thực hiện lab này, hãy xem lại cách triển khai tài nguyên lab trong phần 2 của workshop đầu tiên (Kubernetes trên AWS). Trên môi trường Cloud9 đã tạo ở bài đầu tiên, chạy lệnh sau:
+Trên môi trường IDE đã tạo, chạy lệnh sau:
 
-```bash timeout=300 wait=30
+```bash
 $ prepare-environment exposing/load-balancer
 ```
 
