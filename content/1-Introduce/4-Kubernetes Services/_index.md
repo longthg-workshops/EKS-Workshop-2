@@ -1,9 +1,9 @@
 ---
 title: "Kubernetes Services"
 date: "2024-04-03"
-weight: 1
+weight: 4
 chapter: false
-pre: "<b> 1.1 </b>"
+pre: "<b> 1.4 </b>"
 ---
 
 ### Services

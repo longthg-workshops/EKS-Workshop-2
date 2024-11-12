@@ -1,9 +1,9 @@
 ---
 title: "Bộ điều khiển cân bằng tải"
 date: "2024-04-03"
-weight: 2
+weight: 5
 chapter: false
-pre: "<b> 1.2 </b>"
+pre: "<b> 1.5 </b>"
 ---
 
 **AWS Load Balancer Controller** là [bộ điều khiển](https://kubernetes.io/docs/concepts/architecture/controller/) giúp quản lý **Elastic Load Balancer** cho cụm Kubernetes.

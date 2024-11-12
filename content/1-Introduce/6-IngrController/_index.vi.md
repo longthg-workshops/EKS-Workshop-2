@@ -1,9 +1,9 @@
 ---
 title: "Bộ điều khiển Ingress"
 date: "2024-04-03"
-weight: 3
+weight: 6
 chapter: false
-pre: "<b> 1.3 </b>"
+pre: "<b> 1.6 </b>"
 ---
 
 ### Ingress
