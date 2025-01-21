@@ -1,6 +1,5 @@
 ---
 title: "Sử dụng eksctl"
-date: "`r Sys.Date()`"
 weight: 1
 chapter: false
 pre: "<b> 2.2.1 </b>"

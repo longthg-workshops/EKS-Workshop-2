@@ -1,6 +1,5 @@
 ---
 title: "Exposing your applications on Amazon EKS"
-date: "`r Sys.Date()`"
 weight: 1
 chapter: false
 ---

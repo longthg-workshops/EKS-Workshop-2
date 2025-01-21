@@ -1,6 +1,5 @@
 ---
 title: "Dịch vụ Kubernetes"
-date: "2024-04-03"
 weight: 4
 chapter: false
 pre: "<b> 1.4 </b>"

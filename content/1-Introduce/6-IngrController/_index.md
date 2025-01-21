@@ -1,6 +1,5 @@
 ---
 title: "Ingress Controller"
-date: "2024-04-03"
 weight: 6
 chapter: false
 pre: "<b> 1.6 </b>"

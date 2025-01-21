@@ -1,6 +1,5 @@
 ---
 title: "Deploying VSCode on EC2 and access it from your local VSCode"
-date: "`r Sys.Date()`"
 weight: 3
 chapter: false
 pre: "<b> 2.1.3 </b>"

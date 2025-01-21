@@ -1,6 +1,5 @@
 ---
 title: "Triển khai môi trường lab trên Cloud9 (Đã ngừng hỗ trợ)"
-date: "`r Sys.Date()`"
 weight: 1
 chapter: false
 pre: "<b> 2.1.1 </b>"

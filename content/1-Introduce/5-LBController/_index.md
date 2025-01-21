@@ -1,6 +1,5 @@
 ---
 title: "Load Ballancer Controller"
-date: "2024-04-03"
 weight: 5
 chapter: false
 pre: "<b> 1.5 </b>"
