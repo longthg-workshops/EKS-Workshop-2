@@ -8,7 +8,7 @@ chapter: false
 
 Trong workshop này, chúng ta sẽ tìm hiểu về cách mở truy cập vào một ứng dụng trên cụm Amazon EKS của bạn. Bạn sẽ được học cách cài đặt và sử dụng AWS Load Balancer Controller và đối tượng Ingress.
 
-![](/images/home/EKS_expose.png?width=60pc)
+![](/EKS-Workshop-2/images/home/EKS_expose.png?width=60pc)
 
 ### Mục lục workshop
 

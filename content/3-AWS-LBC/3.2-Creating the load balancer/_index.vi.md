@@ -139,7 +139,7 @@ $ aws elbv2 describe-target-health --target-group-arn $TARGET_GROUP_ARN
 
 Bạn cũng có thể kiểm tra **NLB** trong bảng điều khiển bằng cách nhấp vào [liên kết này](https://console.aws.amazon.com/ec2/home#LoadBalancers:tag:service.k8s.aws/stack=ui/ui-nlb;sort=loadBalancerName).
 
-![](/images/3/2/0001-nlbmenu.png?width=90pc)
+![](/EKS-Workshop-2/images/3/2/0001-nlbmenu.png?width=90pc)
 
 Lấy liên kết từ tài nguyên Service:
 

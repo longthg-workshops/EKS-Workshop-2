@@ -8,7 +8,7 @@ chapter: false
 
 In this workshop, we will get a grip of how to expose an application on your Amazon EKS cluster. You will learn how to install and use the AWS Load Balancer Controller and the Ingress object.
 
-![](/images/home/EKS_expose.png?width=60pc)
+![](/EKS-Workshop-2/images/home/EKS_expose.png?width=60pc)
 
 ### Table of content
 
