@@ -19,6 +19,4 @@ Trước khi làm các bài thực hành của bộ workshop EKS, vui lòng th�
 
     - Tạo bằng CloudFormation hoặc Terraform
 
-3. [Tìm hiểu cấu trúc bài thực hành](./2.3-structure)
-
-4. [Chuẩn bị môi trường cho lab này](./2.4-thislab)
+3. [Tìm hiểu cấu trúc lab](./2.3-structure)

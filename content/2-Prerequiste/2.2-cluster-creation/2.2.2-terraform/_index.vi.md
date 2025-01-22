@@ -47,7 +47,7 @@ locals {
 
 Cấu hình `vpc.tf` sẽ đảm bảo hạ tầng VPC của chúng ta được tạo ra:
 
-```file hidePath=true
+```
 locals {
   private_subnets = [for k, v in local.azs : cidrsubnet(var.vpc_cidr, 3, k + 3)]
   public_subnets  = [for k, v in local.azs : cidrsubnet(var.vpc_cidr, 3, k)]
@@ -96,7 +96,7 @@ module "vpc" {
 }
 ```
 
-Cuối cùng, tập tin `eks.tf` chỉ định cấu hình cụm EKS của chúng ta, bao gồm một Nhóm Node Quản lý:
+Cuối cùng, tập tin `eks.tf` chỉ định cấu hình cụm EKS của chúng tôi, bao gồm một Nhóm Node Quản lý:
 
 ```
 module "eks" {
